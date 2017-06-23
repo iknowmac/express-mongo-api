@@ -1,0 +1,17 @@
+{
+  "port": 8080,
+  "bodyLimit": "100kb",
+  "corsHeaders": [
+    "Content-Type",
+    "Authorization",
+    "Content-Length",
+    "X-Requested-With"
+  ],
+  "corsMethods": [
+    "GET",
+    "PUT",
+    "POST",
+    "DELETE",
+    "OPTIONS"
+  ]
+}
