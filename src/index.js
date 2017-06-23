@@ -12,6 +12,7 @@ import nunjucks from 'nunjucks';
 import config from './config.json';
 import pkg from '../package.json';
 import initMongo from './db';
+import rmdir from 'rimraf';
 
 let app = express();
 app.server = http.createServer(app);
@@ -67,10 +68,19 @@ app.use(function (err, req, res) {
   res.render('error');
 });
 
-initMongo();
+// Remove the dist directory if not in production
+if (process.env.NODE_ENV !== 'production') {
+  const distPath = path.normalize('./dist');
+  rmdir(distPath, function (err) {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
 
 app.server.listen(process.env.PORT || config.port || 8080, () => {
   console.log(`Running ${pkg.name} v${pkg.version} on port ${app.server.address().port}`);
+  initMongo();
 });
 
 export default app;

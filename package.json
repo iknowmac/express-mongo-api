@@ -1,12 +1,12 @@
 {
   "name": "express-mongo-api",
-  "description": "Express, ES6, and Mongoose REST API Boilerplate",
+  "description": "Express, ES6, and Mongoose RESTful API Boilerplate",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
-    "build": "NODE_ENV=production babel src -s -D -d dist --presets es2015,stage-0",
-    "start": "node dist",
+    "dev": "export NODE_ENV=development && nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "build": "babel src -s -D -d dist --presets es2015,stage-0",
+    "start": "export NODE_ENV=production && node dist",
     "prestart": "npm run -s build",
     "test": "eslint src"
   },
@@ -33,7 +33,8 @@
     "jade": "~1.11.0",
     "mongoose": "^4.10.8",
     "morgan": "~1.8.1",
-    "nunjucks": "^3.0.1"
+    "nunjucks": "^3.0.1",
+    "rimraf": "^2.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
